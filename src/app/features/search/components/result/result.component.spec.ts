@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router, Routes } from '@angular/router';
+import { Router, Routes, ActivatedRoute, Data, Params, convertToParamMap } from '@angular/router';
 
 import { ResultComponent } from './result.component';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +28,14 @@ describe('ResultComponent', () => {
         FormsModule,
         RouterTestingModule.withRoutes(routes)
       ],
-      providers: [SearchService]
+      providers: [SearchService, {
+        provide: ActivatedRoute,
+        useValue: {
+          snapshot: {
+            paramMap: convertToParamMap({userLogin: 'TEST'})
+          }
+        }
+      }]
     })
     .compileComponents();
   }));
@@ -45,12 +52,17 @@ describe('ResultComponent', () => {
 
   it(`Deberia enviar 3 peticiones al buscar un usuario`, async(inject([HttpClient, HttpTestingController],
     (http: HttpClient, backend: HttpTestingController) => {
-      component.inputSearch = 'TEST';
-      component.search();
-
       backend.expectOne('https://api.github.com/users/TEST');
       backend.expectOne('https://api.github.com/users/TEST/repos?sort=stars&order=desc');
       backend.expectOne('https://api.github.com/users/TEST/orgs');
+  })));
+
+  it(`Deberia NO hacer peticiones si NO se ingresa el login de usuario`, async(inject([HttpClient, HttpTestingController],
+    (http: HttpClient, backend: HttpTestingController) => {
+      component.inputSearch = '';
+      component.search();
+
+      backend.match('https://api.github.com/users');
   })));
 
 });
