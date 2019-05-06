@@ -33,6 +33,7 @@
   height: 50px;
   display: inline;
   background-color: #ac53f2;
+  vertical-align: bottom;
 }
 
 .user-avatar {
@@ -59,5 +60,6 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+  margin-right: 7px;
 }
         

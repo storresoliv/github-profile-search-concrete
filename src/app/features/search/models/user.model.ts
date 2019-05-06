@@ -3,7 +3,7 @@ export interface UserI {
     name: string;
     location: string;
     followers: number;
-    organizations_url: string;
+    organization: string;
     repositories_count: number;
     star_count: number;
     avatar_url: string;
