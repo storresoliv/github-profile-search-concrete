@@ -38,7 +38,8 @@ export class ResultComponent implements OnInit {
     if (this.inputSearch !== '') {
       Promise.all([
         this.service.getUser(this.inputSearch).toPromise(),
-        this.service.getUserRepositories(this.inputSearch).toPromise()
+        this.service.getUserRepositories(this.inputSearch).toPromise(),
+        this.service.getOrganizations(this.inputSearch).toPromise()
       ]).then(values => {
         this.isUserNotFound = false;
         this.user = values[0];
@@ -49,7 +50,10 @@ export class ResultComponent implements OnInit {
         } else {
           this.user.star_count = 0;
         }
-      }).catch((e) => {
+        if (values[2].length > 0) {
+          this.user.organization = values[2][0].login;
+        }
+      }).catch(() => {
         this.isUserNotFound = true;
         this.user = undefined;
       });
