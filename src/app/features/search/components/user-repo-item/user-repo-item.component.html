@@ -1,3 +1,5 @@
-<p class="repo-name">repo_name</p>
-<p class="repo-description">repo_description</p>
-<p class="star-count"><span class="icon"></span>  star_count</p>
+<div class="repository">
+    <p class="repo-name">{{repository.name}}</p>
+    <p class="repo-description">{{repository.description}}</p>
+    <p class="star-count"><img class="icon" src="assets/icons/star_icon.png" srcset="assets/icons/star_icon@2x.png 2x, assets/icons/star_icon@3x.png 3x">{{repository.stargazers_count}}</p>
+</div>

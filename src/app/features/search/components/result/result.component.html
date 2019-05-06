@@ -7,9 +7,9 @@
 
   <div class="col-8 col-md-8">
     <div class="search">
-        <input type="text" [(ngModel)]="inputSearch" (keyup.enter)="gotoResult()">
-        <button (click)="gotoResult()">
-          <img class="search-icon" src="assets/icons/search-icon.png" srcset="assets/icons/search-icon@2x.png 2x, assets/icons/search-icon@3x.png 3x">
+        <input type="text" [(ngModel)]="inputSearch" (keyup.enter)="reload()">
+        <button (click)="reload()">
+          <img class="search-icon" src="assets/icons/search_icon.png" srcset="assets/icons/search_icon@2x.png 2x, assets/icons/search_icon@3x.png 3x">
         </button>
       </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="col-8 col-md-8">
       <app-not-found *ngIf="isUserNotFound"></app-not-found>
       <div *ngIf="!isUserNotFound">
-          <app-user-repo-item *ngFor="let repository of [1,2,3]"></app-user-repo-item>
+          <app-user-repo-item *ngFor="let repository of repositories" [repository]="repository"></app-user-repo-item>
       </div>
   </div>
 </div>
