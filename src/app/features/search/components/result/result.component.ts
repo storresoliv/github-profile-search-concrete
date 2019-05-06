@@ -75,6 +75,7 @@ export class ResultComponent implements OnInit {
   reload() {
     if (this.inputSearch !== '') {
       this.router.navigate(['/search', this.inputSearch]);
+      this.search();
     }
   }
 }
