@@ -1,0 +1,19 @@
+<div *ngIf="user">
+  <div class="user-avatar">
+    <img src="{{user.avatar_url}}" alt="img-avatar">
+  </div>
+  <p class="user-name">{{user.name}}</p>
+  <p class="user-login">{{user.login}}</p>
+  <div class="details">
+    <p><img class="icon" src="assets/icons/organization_icon.png" srcset="assets/icons/organization_icon@2x.png 2x, assets/icons/organization_icon@3x.png 3x">
+      {{user.organization}}</p>
+    <p><img class="icon" src="assets/icons/location_icon.png" srcset="assets/icons/location_icon@2x.png 2x, assets/icons/location_icon@3x.png 3x">
+      {{user.location}}</p>
+    <p><img class="icon" src="assets/icons/star_icon.png" srcset="assets/icons/star_icon@2x.png 2x, assets/icons/star_icon@3x.png 3x">
+      {{user.star_count}}</p>
+    <p><img class="icon" src="assets/icons/repositorie_icon.png" srcset="assets/icons/repositorie_icon@2x.png 2x, assets/icons/repositorie_icon@3x.png 3x">
+      {{user.repositories_count}}</p> 
+    <p><img class="icon" src="assets/icons/followers_icon.png" srcset="assets/icons/followers_icon@2x.png 2x, assets/icons/followers_icon@3x.png 3x">
+      {{user.followers}}</p>
+  </div>
+</div>

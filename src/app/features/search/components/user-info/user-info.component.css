@@ -1,0 +1,18 @@
+.details p {
+    width: 240px;
+    height: 22px;
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.user-avatar {
+    margin-bottom: 12px;
+}
+.user-name {
+    margin-bottom: 7px;
+    font-size: 35px;
+}
+.user-login {
+    margin-bottom: 33px;
+    font-size: 20px;
+}
